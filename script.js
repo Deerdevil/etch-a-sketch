@@ -20,11 +20,16 @@ toolPickColor.addEventListener("click", colorPicker);
 // toolEraser.addEventListener("click", eraser);
 function colorPicker() {
   document.getElementById("color--picker").classList.remove("hidden");
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 8; i++) {
+    let colorPicker = document.querySelector(".color--picker");
     let createDiv = document.createElement("div");
-    toolPickColor.appendChild(createDiv);
+    colorPicker.appendChild(createDiv);
   }
+  addClassToChildren("color--picker", "div", "color--picker--colors");
+
+  addRandomColor("color--picker", "div");
 }
+
 //Create canvas
 function createCanvas16() {
   mainCanvas.classList.remove("hidden");
@@ -72,7 +77,23 @@ function resetCanvas() {
   mainCanvas.style.backgroundColor = "";
   mainCanvas.id = "start--canvas";
 }
-//Color picker
+//Adds class to the created divs
+function addClassToChildren(id, tag, className) {
+  let children = document.getElementById(id).getElementsByTagName(tag);
+
+  for (let i = 0; i < children.length; i++) {
+    children[i].classList.add(className);
+  }
+}
+//Color picker add colors
+
+function addRandomColor(id, tag) {
+  let children = document.getElementById(id).getElementsByTagName(tag);
+
+  for (let i = 0; i < children.length; i++) {
+    children[i].style.backgroundColor = `${randomColorArr[i]}`;
+  }
+}
 
 //Random colors
 
@@ -84,20 +105,14 @@ let randomColorArr = [
   "brown",
   "black",
   "yellow",
+  "orange",
 ];
 function randomColor(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
   const item = arr[randomIndex];
   return item;
 }
-//Adds class to the created divs
-function addClassToChildren(id, tag, className) {
-  let children = document.getElementById(id).getElementsByTagName(tag);
 
-  for (let i = 0; i < children.length; i++) {
-    children[i].classList.add(className);
-  }
-}
 //Tells us where to paint
 let holding = false;
 function getCursorPos(mainCanvas) {
