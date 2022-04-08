@@ -121,5 +121,6 @@
   display: none;
 }
 .color {
-  border: 1px solid black;
+  z-index: 2;
+  cursor: crosshair;
 }

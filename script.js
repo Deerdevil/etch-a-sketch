@@ -17,25 +17,8 @@ function createCanvas16() {
 
     canvas16.appendChild(createDiv);
   }
-  let children = document
-    .getElementById("main--canvas")
-    .getElementsByTagName("div");
-
-  for (let i = 0; i < children.length; i++) {
-    children[i].classList.add("color");
-  }
-}
-createCanvas16();
-
-//Color on mouseover
-const color = document.querySelector(".color");
-color.onmouseover = colorMouseOver;
-color.onmouseout = colorMouseOut;
-function colorMouseOver() {
-  color.style.backgroundColor = "blue";
-}
-function colorMouseOut() {
-  color.style.backgroundColor = "red";
+  addColorClass();
+  draw();
 }
 
 function createCanvas32() {
@@ -46,6 +29,8 @@ function createCanvas32() {
     let canvas16 = document.querySelector(".canvas--32");
     canvas16.appendChild(createDiv);
   }
+  addColorClass();
+  draw();
 }
 function createCanvas64() {
   mainCanvas.classList.remove("canvas");
@@ -55,12 +40,36 @@ function createCanvas64() {
     let canvas64 = document.querySelector(".canvas--64");
     canvas64.appendChild(createDiv);
   }
+  addColorClass();
+  draw();
 }
 function resetCanvas() {
   mainCanvas.replaceChildren();
   mainCanvas.classList.add("canvas");
 }
+//DRAW on the canvas
+function draw() {
+  const colors = document.getElementById("main--canvas");
+  //Checks if target is within the main canvas and applies color
+  colors.onmouseover = function (event) {
+    let target = event.target;
+    target.style.backgroundColor = "blue";
+  };
+  colors.onmouseout = function (event) {
+    let target = event.target;
+    target.style.backgroundColor = "blue";
+  };
+}
+//Adds the class of color to the created divs
+function addColorClass() {
+  let children = document
+    .getElementById("main--canvas")
+    .getElementsByTagName("div");
 
+  for (let i = 0; i < children.length; i++) {
+    children[i].classList.add("color");
+  }
+}
 //Buttons and clicks
 
 btnCanvas16.addEventListener("click", createCanvas16);
