@@ -67,21 +67,57 @@ function randomColor(arr) {
 function draw() {
   mainCanvas.id = "main--canvas";
   const colors = document.getElementById("main--canvas");
+
   //Checks if target is within the main canvas and applies color
 
-  colors.onmouseover = function (event) {
-    if (colors.id === "main--canvas") {
+  // colors.onmouseover = function (event) {
+  //   if (colors.id === "main--canvas") {
+  //     let target = event.target;
+  //     target.style.backgroundColor = `${randomColor(randomColorArr)}`;
+  //   }
+  // };
+
+  // colors.onmouseout = function (event) {
+  //   if (colors.id === "main--canvas") {
+  //     let target = event.target;
+  //     target.style.backgroundColor = `${selectedColor}`;
+  //   }
+  // };
+}
+//Testing
+let holding = false;
+function getCursorPos(mainCanvas, event) {
+  // const rect = mainCanvas.getBoundingClientRect();
+  // const x = event.clientX - rect.left;
+  // const y = event.clientY - rect.top;
+  mainCanvas.id = "main--canvas";
+  const colors = document.getElementById("main--canvas");
+
+  colors.onmousedown = function (event) {
+    holding = true;
+  };
+  colors.onmouseup = function (event) {
+    holding = false;
+  };
+  colors.onmousemove = function (event) {
+    if (holding === true) {
       let target = event.target;
       target.style.backgroundColor = `${randomColor(randomColorArr)}`;
     }
   };
-  colors.onmouseout = function (event) {
-    if (colors.id === "main--canvas") {
-      let target = event.target;
-      target.style.backgroundColor = `${selectedColor}`;
-    }
-  };
 }
+mainCanvas.addEventListener("mousedown", function (e) {
+  holding = true;
+});
+mainCanvas.addEventListener("mouseup", function (e) {
+  holding = false;
+});
+mainCanvas.addEventListener("mousemove", function (e) {
+  if (holding === true) {
+    draw();
+    getCursorPos(mainCanvas, e);
+  }
+});
 
 //Adds the class of color to the created divs
 function addColorClass() {
