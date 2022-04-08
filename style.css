@@ -47,7 +47,7 @@
 }
 .canvas--16 {
   grid-area: 2 / 3 / 6 / 7;
-  border: 1px solid black;
+
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(16, 1fr);
@@ -64,15 +64,7 @@
   grid-template-columns: repeat(64, 1fr);
   grid-template-rows: repeat(64, 1fr);
 }
-/* .canvas--16 > div:hover {
-  background-color: red;
-}
-.canvas--32 > div:hover {
-  background-color: greenyellow;
-}
-.canvas--64 > div:hover {
-  background-color: blue;
-} */
+
 .canvas--buttons {
   display: flex;
   flex-direction: column;
