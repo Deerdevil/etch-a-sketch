@@ -64,7 +64,7 @@
   grid-template-columns: repeat(64, 1fr);
   grid-template-rows: repeat(64, 1fr);
 }
-.canvas--16 > div:hover {
+/* .canvas--16 > div:hover {
   background-color: red;
 }
 .canvas--32 > div:hover {
@@ -72,7 +72,7 @@
 }
 .canvas--64 > div:hover {
   background-color: blue;
-}
+} */
 .canvas--buttons {
   display: flex;
   flex-direction: column;
@@ -119,4 +119,7 @@
 
 .hidden {
   display: none;
+}
+.color {
+  border: 1px solid black;
 }
