@@ -28,6 +28,15 @@
   align-items: center;
   gap: 1rem;
 }
+.color--picker {
+  height: 50%;
+  z-index: 3;
+  grid-area: 2 / 2 / 6 / 3;
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
 .tools {
   display: flex;
   flex-direction: column;
@@ -70,6 +79,7 @@
   flex-direction: column;
   gap: 1rem;
 }
+
 /* Footer */
 .footer {
   max-height: 5rem;
