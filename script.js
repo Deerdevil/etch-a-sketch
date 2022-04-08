@@ -65,7 +65,6 @@ function randomColor(arr) {
 }
 
 function draw() {
-  const selectedColor = randomColor(randomColorArr);
   mainCanvas.id = "main--canvas";
   const colors = document.getElementById("main--canvas");
   //Checks if target is within the main canvas and applies color
@@ -73,7 +72,7 @@ function draw() {
   colors.onmouseover = function (event) {
     if (colors.id === "main--canvas") {
       let target = event.target;
-      target.style.backgroundColor = `${selectedColor}`;
+      target.style.backgroundColor = `${randomColor(randomColorArr)}`;
     }
   };
   colors.onmouseout = function (event) {
