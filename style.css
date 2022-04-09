@@ -7,10 +7,17 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: min(90vh, 1200px);
+  width: min(90vw, 1200px);
   margin-inline: auto;
   margin-top: 1em;
 }
-
+.bg-svg {
+  grid-area: 1/2/9/7;
+  /* object-fit: contain;
+  background: url(img/Subtract.svg) left top no-repeat; */
+}
+img {
+}
 .header {
   grid-area: 1 / 2 / 2 / 7;
   border: 1px solid black;
@@ -98,6 +105,10 @@
   .header {
     grid-area: 1/1/2/8;
   }
+  .bg-svg {
+    grid-area: 1/1/9/8;
+  }
+
   .canvas,
   .canvas--16,
   .canvas--32,
