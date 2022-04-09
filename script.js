@@ -9,6 +9,7 @@ const btnReset = document.querySelector(".btn--reset");
 const toolPickColor = document.querySelector(".tool--one");
 const toolRandomColor = document.querySelector(".tool--two");
 const toolEraser = document.querySelector(".tool--three");
+const openColorPicker = document.getElementById("color--picker");
 //Buttons and clicks
 
 btnCanvas16.addEventListener("click", createCanvas16);
@@ -18,30 +19,51 @@ btnReset.addEventListener("click", resetCanvas);
 toolPickColor.addEventListener("click", colorPicker);
 // toolRandomColor.addEventListener("click", pickRandomColor);
 // toolEraser.addEventListener("click", eraser);
-function colorPicker() {
-  document.getElementById("color--picker").classList.remove("hidden");
-  for (let i = 0; i < 8; i++) {
-    let colorPicker = document.querySelector(".color--picker");
-    let createDiv = document.createElement("div");
-    colorPicker.appendChild(createDiv);
-  }
-  addClassToChildren("color--picker", "div", "color--picker--colors");
 
-  addRandomColor("color--picker", "div");
+function createElements(SelectClass, CreateElement, iterations) {
+  for (let i = 0; i < iterations; i++) {
+    let classBe = document.querySelector(SelectClass);
+    let elementBe = document.createElement(CreateElement);
+    classBe.appendChild(elementBe);
+  }
+  console.log(iterations);
 }
 
+let pickedTool = false;
+function colorPicker() {
+  openColorPicker.classList.remove("hidden");
+  openColorPicker.classList.add("active");
+  pickedTool = true;
+  createElements(".color--picker", "div", 8);
+  console.log(createElements);
+
+  addClassToChildren("color--picker", "div", "color--picker--colors");
+  addRandomColor("color--picker", "div");
+
+  const colorpick = document.getElementById("color--picker");
+
+  colorpick.addEventListener("click", function (event) {
+    let target = event.target;
+    toolChoice = target.style.backgroundColor;
+    console.log(toolChoice);
+  });
+}
+
+// function toolChoice() {
+//   if(pickedTool && )
+// }
+
+// randomColor(randomColorArr)
 //Create canvas
 function createCanvas16() {
   mainCanvas.classList.remove("hidden");
+  //Swap canvas ID so we can draw on it
   mainCanvas.id = "main--canvas";
   mainCanvas.classList.remove("canvas");
   mainCanvas.classList.add("canvas--16");
-  for (let i = 0; i < 256; i++) {
-    let canvas16 = document.querySelector(".canvas--16");
-    let createDiv = document.createElement("div");
-
-    canvas16.appendChild(createDiv);
-  }
+  //Populate grid with DIVs
+  createElements(".canvas--16", "div", 256);
+  //Add color class to DIVs
   addClassToChildren("main--canvas", "div", "color");
 }
 function createCanvas32() {
@@ -49,11 +71,7 @@ function createCanvas32() {
   mainCanvas.id = "main--canvas";
   mainCanvas.classList.remove("canvas");
   mainCanvas.classList.add("canvas--32");
-  for (let i = 0; i < 1024; i++) {
-    let createDiv = document.createElement("div");
-    let canvas16 = document.querySelector(".canvas--32");
-    canvas16.appendChild(createDiv);
-  }
+  createElements(".canvas--32", "div", 1024);
   addClassToChildren("main--canvas", "div", "color");
 }
 function createCanvas64() {
@@ -61,11 +79,7 @@ function createCanvas64() {
   mainCanvas.id = "main--canvas";
   mainCanvas.classList.remove("canvas");
   mainCanvas.classList.add("canvas--64");
-  for (let i = 0; i < 4096; i++) {
-    let createDiv = document.createElement("div");
-    let canvas64 = document.querySelector(".canvas--64");
-    canvas64.appendChild(createDiv);
-  }
+  createElements(".canvas--64", "div", 4096);
   addClassToChildren("main--canvas", "div", "color");
 }
 function resetCanvas() {
@@ -127,7 +141,7 @@ function getCursorPos(mainCanvas) {
   colors.onmousemove = function (event) {
     if (holding === true) {
       let target = event.target;
-      target.style.backgroundColor = `${randomColor(randomColorArr)}`;
+      target.style.backgroundColor = `${toolChoice}`;
     }
   };
 }
