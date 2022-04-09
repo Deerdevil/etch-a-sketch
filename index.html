@@ -11,21 +11,28 @@
   </head>
   <body>
     <div class="container">
-      <div class="bg-svg">
-        <img src="img/Subtract.svg" alt="" />
+      <div class="bottom">
+        <div class="nail--left"></div>
+        <div class="nail--rigth"></div>
       </div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="top">
+        <div class="nail--left"></div>
+        <div class="nail--rigth"></div>
+      </div>
+
       <div id="color--picker" class="color--picker hidden"></div>
-      <div class="header">
+      <div class="header hidden">
         <h1>Lets draw</h1>
-        <button class="btn--reset">Reset</button
-        ><button class="btn--create--16">Create 16x16 canvas</button>
+        <button class="btn--reset">Reset</button>
+        <button class="btn--create--16">Create 16x16 canvas</button>
         <button class="btn--create--32">Create 32x32 canvas</button>
         <button class="btn--create--64">Create 64x64 canvas</button>
       </div>
-      <div id="start--canvas" class="hidden canvas">
-        <!-- <h3>Canvas</h3> -->
-      </div>
-      <div class="toolbar">
+
+      <div id="start--canvas" class="hidden canvas"></div>
+      <div class="toolbar hidden">
         <h3>Tools</h3>
 
         <div class="tools">
@@ -34,7 +41,7 @@
           <div class="tool tool--three">Eraser</div>
         </div>
       </div>
-      <div class="footer">
+      <div class="footer hidden">
         <h3>Foot</h3>
       </div>
     </div>
