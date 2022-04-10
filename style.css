@@ -284,7 +284,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   font-size: 1.7rem;
-  color: var(--accent);
+  color: var(--white);
   transition: all 0.3s ease-in-out;
 }
 .frame--text--bottom:hover {
@@ -300,9 +300,4 @@ button:hover {
 .options > h2 {
   font-family: var(--font-main);
   color: var(--black);
-}
-
-h5:hover {
-  border-bottom: 2px solid var(--accent);
-  transition-duration: 0.3s;
 }
