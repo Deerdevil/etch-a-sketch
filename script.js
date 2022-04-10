@@ -11,6 +11,8 @@ const toolPickColor = document.querySelector(".tool--one");
 const toolRandomColor = document.querySelector(".tool--two");
 const toolEraser = document.querySelector(".tool--three");
 const openColorPicker = document.getElementById("color--picker");
+const btnOptions = document.querySelector(".btn--options");
+const options = document.querySelector(".options");
 //Booleans
 //Sets if the color should be random
 let randomChoice = false;
@@ -53,6 +55,7 @@ toolRandomColor.addEventListener("click", function () {
 
 //Create canvas
 function createCanvas16() {
+  options.classList.add("hidden");
   mainCanvas.classList.remove("hidden");
   //Swap canvas ID so we can draw on it
   mainCanvas.id = "main--canvas";
