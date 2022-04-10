@@ -7,23 +7,25 @@ const btnCanvas16 = document.querySelector(".btn--create--16");
 const btnCanvas32 = document.querySelector(".btn--create--32");
 const btnCanvas64 = document.querySelector(".btn--create--64");
 const btnReset = document.querySelector(".btn--reset");
-// const toolPickColor = document.querySelector(".tool--one");
+const toolPickColor = document.querySelector(".tool--one");
 const toolRandomColor = document.querySelector(".tool--two");
 const toolEraser = document.querySelector(".tool--three");
 const openColorPicker = document.getElementById("color--picker");
 const btnOptions = document.querySelector(".btn--options");
 const options = document.querySelector(".options");
+const toolbar = document.querySelector(".toolbar");
 //Booleans
 //Sets if the color should be random
 let randomChoice = false;
-
+//After you reset game, so that the tool menu pops right after choosing canvas
+let reset = true;
 //Buttons and clicks
 
 btnCanvas16.addEventListener("click", createCanvas16);
 btnCanvas32.addEventListener("click", createCanvas32);
 btnCanvas64.addEventListener("click", createCanvas64);
 btnReset.addEventListener("click", resetCanvas);
-// toolPickColor.addEventListener("click", colorPicker);
+toolPickColor.addEventListener("click", colorPicker);
 
 toolEraser.addEventListener("click", function () {
   randomChoice = false;
@@ -31,6 +33,7 @@ toolEraser.addEventListener("click", function () {
 });
 
 function colorPicker() {
+  toolbar.classList.add("hidden");
   randomChoice = false;
   openColorPicker.replaceChildren();
   openColorPicker.classList.remove("hidden");
@@ -55,6 +58,9 @@ toolRandomColor.addEventListener("click", function () {
 
 //Create canvas
 function createCanvas16() {
+  if (reset === true) {
+    toolbar.classList.remove("hidden");
+  }
   options.classList.add("hidden");
   mainCanvas.classList.remove("hidden");
   //Swap canvas ID so we can draw on it
@@ -91,6 +97,7 @@ function resetCanvas() {
   mainCanvas.style.backgroundColor = "";
   mainCanvas.id = "start--canvas";
   randomChoice = false;
+  reset = true;
 }
 //Create DIVs to populate the grid
 function createElements(SelectClass, CreateElement, iterations) {

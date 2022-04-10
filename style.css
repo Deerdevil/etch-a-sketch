@@ -29,8 +29,9 @@ html {
   gap: 2rem;
 }
 .toolbar {
+  cursor: pointer;
   grid-area: 2 / 2 / 8 / 8;
-
+  z-index: 11;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
@@ -41,12 +42,13 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  white-space: nowrap;
 }
 .tool {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: var(--accent);
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -260,6 +262,7 @@ button:hover {
   color: var(--accent);
   scale: 110%;
 }
+
 .options > h2 {
   grid-row: 3;
 }
