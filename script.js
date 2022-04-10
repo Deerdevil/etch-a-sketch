@@ -7,7 +7,7 @@ const btnCanvas16 = document.querySelector(".btn--create--16");
 const btnCanvas32 = document.querySelector(".btn--create--32");
 const btnCanvas64 = document.querySelector(".btn--create--64");
 const btnReset = document.querySelector(".btn--reset");
-const toolPickColor = document.querySelector(".tool--one");
+// const toolPickColor = document.querySelector(".tool--one");
 const toolRandomColor = document.querySelector(".tool--two");
 const toolEraser = document.querySelector(".tool--three");
 const openColorPicker = document.getElementById("color--picker");
@@ -23,7 +23,7 @@ btnCanvas16.addEventListener("click", createCanvas16);
 btnCanvas32.addEventListener("click", createCanvas32);
 btnCanvas64.addEventListener("click", createCanvas64);
 btnReset.addEventListener("click", resetCanvas);
-toolPickColor.addEventListener("click", colorPicker);
+// toolPickColor.addEventListener("click", colorPicker);
 
 toolEraser.addEventListener("click", function () {
   randomChoice = false;
