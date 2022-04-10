@@ -14,6 +14,7 @@ const openColorPicker = document.getElementById("color--picker");
 const btnOptions = document.querySelector(".btn--options");
 const options = document.querySelector(".options");
 const toolbar = document.querySelector(".toolbar");
+const btnTools = document.querySelector(".btn--tools");
 //Booleans
 //Sets if the color should be random
 let randomChoice = false;
@@ -26,8 +27,24 @@ btnCanvas32.addEventListener("click", createCanvas32);
 btnCanvas64.addEventListener("click", createCanvas64);
 btnReset.addEventListener("click", resetCanvas);
 toolPickColor.addEventListener("click", colorPicker);
+btnTools.addEventListener("click", function () {
+  toolbar.classList.toggle("hidden");
+});
+btnOptions.addEventListener("click", function () {
+  options.classList.toggle("hidden");
+  btnReset.innerHTML = "Reset game";
+  if (!options.classList.contains("hidden")) {
+    mainCanvas.classList.add("hidden");
+  }
+});
+toolRandomColor.addEventListener("click", function () {
+  toolbar.classList.add("hidden");
+  mainCanvas.id = "main--canvas";
+  randomChoice = true;
+});
 
 toolEraser.addEventListener("click", function () {
+  toolbar.classList.add("hidden");
   randomChoice = false;
   toolChoice = "white";
 });
@@ -51,16 +68,13 @@ function colorPicker() {
   });
 }
 
-toolRandomColor.addEventListener("click", function () {
-  mainCanvas.id = "main--canvas";
-  randomChoice = true;
-});
-
 //Create canvas
 function createCanvas16() {
+  toolChoice = "black";
   if (reset === true) {
     toolbar.classList.remove("hidden");
   }
+
   options.classList.add("hidden");
   mainCanvas.classList.remove("hidden");
   //Swap canvas ID so we can draw on it
@@ -73,6 +87,10 @@ function createCanvas16() {
   addClassToChildren("main--canvas", "div", "color");
 }
 function createCanvas32() {
+  if (reset === true) {
+    toolbar.classList.remove("hidden");
+  }
+  options.classList.add("hidden");
   mainCanvas.classList.remove("hidden");
   mainCanvas.id = "main--canvas";
   mainCanvas.classList.remove("canvas");
@@ -81,6 +99,10 @@ function createCanvas32() {
   addClassToChildren("main--canvas", "div", "color");
 }
 function createCanvas64() {
+  if (reset === true) {
+    toolbar.classList.remove("hidden");
+  }
+  options.classList.add("hidden");
   mainCanvas.classList.remove("hidden");
   mainCanvas.id = "main--canvas";
   mainCanvas.classList.remove("canvas");
@@ -98,6 +120,7 @@ function resetCanvas() {
   mainCanvas.id = "start--canvas";
   randomChoice = false;
   reset = true;
+  btnReset.innerHTML = "Game has been reset";
 }
 //Create DIVs to populate the grid
 function createElements(SelectClass, CreateElement, iterations) {
