@@ -5,21 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-a-sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="reset.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
+      <div class="right"></div>
       <div class="bottom">
-        <div class="nail--left"></div>
-        <div class="nail--rigth"></div>
+        <h1 class="frame--text--bottom">Tools</h1>
+        <h1 class="frame--text--bottom">Options</h1>
+        <div class="bottom--left"><div class="nail"></div></div>
+        <div class="bottom--right"><div class="nail"></div></div>
       </div>
       <div class="left"></div>
-      <div class="right"></div>
+
       <div class="top">
-        <div class="nail--left"></div>
-        <div class="nail--rigth"></div>
+        <h1 class="frame--text--top">My little drawing frame</h1>
+        <div class="top--left"><div class="nail"></div></div>
+        <div class="top--right"><div class="nail"></div></div>
       </div>
 
       <div id="color--picker" class="color--picker hidden"></div>
